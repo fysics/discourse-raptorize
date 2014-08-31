@@ -9,28 +9,38 @@ Enabled raptorized discourse pages
 
 ## Installation
 
-Just two easy steps. From your main discourse do:
+Just two easy steps. From your main discourse directory do:
 
-    cd plugins
-    git clone https://github.com/Cosban/discourse-raptorize.git
-    cd ..
-    export RAILS_ENV=production                 # set to production
-    rake assets:precompile                      # precompile assets
+```shell
+cd plugins
+git clone https://github.com/Cosban/discourse-raptorize.git
+cd ..
+RAILS_ENV=production rake assets:precompile
+```
 
 
 If you're running discourse inside a docker container:
 
  - Add the plugin's `git clone` url inside your `app.yml` where your other plugins are:
- 
-    hooks:
-     after_code:
-       - exec:
-           cd: $home/plugins
-           cmd:
-             - mkdir -p plugins
-             - git clone https://github.com/discourse/docker_manager.git
-             - git clone https://github.com/discourse/discourse-spoiler-alert.git
-             - git clone https://github.com/Cosban/discourse-raptorize.git
+
+
+```yaml
+hooks:
+  after_code:
+    - exec:
+        cd: $home/plugins
+        cmd:
+          - mkdir -p plugins
+          - git clone https://github.com/discourse/docker_manager.git
+          - git clone https://github.com/Cosban/discourse-raptorize.git
+```
+
+ - Rebuild the docker containter:
+
+```shell
+cd /var/discourse
+./launcher rebuild app
+```
 
 ## Changelog:
 
