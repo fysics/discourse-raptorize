@@ -1,14 +1,3 @@
-/*
- * jQuery Raptorize Plugin 1.0
- * www.ZURB.com/playground
- * Copyright 2010, ZURB
- * Free to use under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
-*/
-
-//TODO: Update to latest JQuery
-//TODO: Strip out button and timer options
-
 (function($) {
 
     $.fn.raptorize = function() {
@@ -19,19 +8,20 @@
             var _this = $(this);
             
             var audio = new Audio()
-            audio.src = Modernizr.audio.ogg ? 'raptor-sound.ogg' :
+            audio.src = 'public/sounds/';
+            audio.src += Modernizr.audio.ogg ? 'raptor-sound.ogg' :
                         Modernizr.audio.mp3 ? 'raptor-sound.mp3' :
                                               '';
 			
             //Raptor Vars
-            var raptorImageMarkup = '<img id="elRaptor" style="display: none" src="raptor.png" />'
-            var raptorAudioMarkup = '<audio id="elRaptorShriek" preload="auto"><source src="' + audio.src + '" /></audio>';	
+            var raptorImageMarkup = '<img id="Raptor" style="display: none" src="public/images/raptor.png" />'
+            var raptorAudioMarkup = '<audio id="RaptorShriek" preload="auto"><source src="' + audio.src + '" /></audio>';	
             var locked = false;
 			
             //Append Raptor and Style
             $('body').append(raptorImageMarkup);
             $('body').append(raptorAudioMarkup);
-            var raptor = $('#elRaptor').css({
+            var raptor = $('#Raptor').css({
                 "position":"fixed",
                 "bottom": "-700px",
                 "right" : "0",
@@ -44,7 +34,7 @@
 		
                 //Sound Hilarity
                 function playSound() {
-                    document.getElementById('elRaptorShriek').play();
+                    document.getElementById('RaptorShriek').play();
                 }
                 playSound();
 								
