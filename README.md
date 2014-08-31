@@ -1,6 +1,6 @@
 # Discourse Raptorize Plugin
 
-**ATTENION: under construction**
+**ATTENTION: under construction**
 
 
 Enabled raptorized discourse pages
@@ -17,6 +17,20 @@ Just two easy steps. From your main discourse do:
     export RAILS_ENV=production                 # set to production
     rake assets:precompile                      # precompile assets
 
+
+If you're running discourse inside a docker container:
+
+ - Add the plugin's `git clone` url inside your `app.yml` where your other plugins are:
+ 
+    hooks:
+     after_code:
+       - exec:
+           cd: $home/plugins
+           cmd:
+             - mkdir -p plugins
+             - git clone https://github.com/discourse/docker_manager.git
+             - git clone https://github.com/discourse/discourse-spoiler-alert.git
+             - git clone https://github.com/Cosban/discourse-raptorize.git
 
 ## Changelog:
 
